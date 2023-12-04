@@ -60,15 +60,15 @@
          
     .btn-grad {
             background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
-            padding: 10px 45px;
+            padding: 6px 45px;
             text-align: center;
             text-transform: uppercase;
             transition: 0.5s;
             background-size: 200% auto;
             color: white;
             box-shadow: 0 0 20px #eee;
-            border-radius: 10px;
-            display: block;
+            border-radius: 7px;
+             display: inline-block;;
             border: none;
           }
 
@@ -95,6 +95,47 @@
             color: #fff;
             opacity: .9;
          }
+
+         .container-edit{
+            margin-top:8rem;
+            padding:2rem;
+            background-color: #000;
+            color: #fff;
+            opacity: .9;
+         }
+  /* Add this CSS to your existing stylesheet or create a new one */
+
+.logout-button {
+    margin-left:1rem;
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #dc3545; /* Bootstrap danger color */
+    color: #dc3545; /* Bootstrap danger color */
+    background-color: transparent;
+    border-radius: 5px;
+    background-color:#fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #dc3545; /* Bootstrap danger color on hover */
+    color: #fff; /* White text on hover */
+}
+.container-profile{
+    margin-top:1rem;
+}
+.container{
+    width:100%;
+    max-width:90% !important;
+}
+.card-profile{
+    max-width: 250px;
+}
     </style>
 </head>
 <body>
@@ -106,7 +147,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto"">
                 @guest
                     <li class="nav-item">
                         <a class="nav-link {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
@@ -115,20 +156,25 @@
                         <a class="nav-link {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
                     </li>
                 @else    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                    <li class="nav-item dropdown" style="display: flex;text-wrap: nowrap;">
+                        <a class="nav-link dropdown-toggle-test" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hello, {{ Auth::user()->name }}
                         </a>
-                        <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"
-                            >Logout</a>
+                        <!-- <ul class="dropdown-menu"> -->
+                        <!-- <li> -->
+                         <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            style="cursor: pointer;"
+                        >
+                            <button type="button" class="btn btn-outline-danger btn-sm logout-button">
+                                Logout
+                            </button>
+                        </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
                             </form>
-                        </li>
-                        </ul>
+                        <!-- </li> -->
+                        <!-- </ul> -->
                     </li>
                 @endguest
             </ul>

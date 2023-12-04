@@ -35,6 +35,6 @@ Route::controller(VerificationController::class)->group(function() {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('edit-profile');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('update-profile');
+    Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
+    Route::post('/update', [ProfileController::class, 'update'])->name('update-profile');
 });
